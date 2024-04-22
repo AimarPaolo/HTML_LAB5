@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <title>Esercizio 5.3</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Paolo Aimar">
+        <link rel="stylesheet" href="lab7.css">
+        <script>
+            "use strict"
+            function get_diametro(){
+                return window.prompt("inserire il diametro del cerchio");
+            }
+            function calculate_area_circonferenza(d){
+                return {area: Math.PI*((d)/2)**2 , circonferenza: Math.PI*d};
+            }
+            function check(n){
+                if(n == "" || isNaN(n) || n == null){
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <script>
+            "use strict"
+            let diametro;
+            do{
+                diametro = get_diametro();
+                if(check(diametro)){
+                    diametro = parseFloat(diametro);
+                    let dati = calculate_area_circonferenza(diametro);
+                    let tavola = "<p>un cerchio di diametro "+diametro.toFixed(3)+" ha area "+dati.area.toFixed(3)+" e circonferenza "+dati.circonferenza.toFixed(3)+"</p>";
+                    document.body.innerHTML = tavola;
+                }
+                else{
+                    window.alert("inserire un numero valido");
+                }
+            }while(check(diametro) == false);
+        </script>
+    </body>
+</html>

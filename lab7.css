@@ -1,0 +1,11 @@
+.dataclass{
+color: aquamarine;
+}
+body{
+    background-color:blueviolet;
+}
+/*@media print{
+    body{
+        text-decoration: underline !important;
+    }
+}*/
