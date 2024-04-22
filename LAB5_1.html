@@ -4,8 +4,51 @@
         <title>Esercizio 5.1</title>
         <meta charset="utf-8">
         <meta name="author" content="Paolo Aimar" >
+        <script>
+            function chiediNumero(){
+                let n = window.prompt("inserire un numero N");
+                return n;
+            }
+            function check(n){
+                if(n == "" || isNaN(n) || n == null){
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+            function tavola_pitagorica(n){
+                let valore = parseInt(n) 
+                let tavola = "<table><tr>"
+                for (let i = 1; i <= valore; i++){
+                    tavola += "<th>" + i + "</th>";
+                }
+                tavola += "</tr>"
+                for(let i = 1; i <= valore; i++){
+                    tavola += "<tr><th>" + i + "</th>"
+                    for(let h = 1; h<= valore; h++){
+                        tavola += "<td>" + (i*h) + "</td>";                     
+                    }
+                    tavola += "</tr>"
+                }
+                tavola += "</table>"
+
+                document.body.innerHTML += tavola
+            }
+        </script>
     </head>
     <body>
-        
+        <h1>Esercizio 5.1</h1>
+        <script>
+            var n
+            do{
+                n = chiediNumero()
+                if(check(n)){
+                    tavola_pitagorica(n)
+                }
+                else{
+                    window.alert("inserire un numero valido")
+                }
+            }while(check(n) == false)
+        </script>
     </body>
 </html>

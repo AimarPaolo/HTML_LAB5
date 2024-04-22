@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <title>Esercizio 5.1</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Paolo Aimar" >
+        <script>
+            "use strict"
+            function getNumber(){
+             return window.prompt("Inserire un numero");
+            }
+        </script>
+    </head>
+    <body>
+        <script>
+            "use strict"
+            let vector = new Array();
+            let i = 0;
+            let valore = getNumber();
+            while(valore != "fine"){
+                if(isNaN(valore) || valore == null || valore == ""){
+                    window.alert("Il valore inserito non è un valore corretto");
+                }
+                else{
+                   vector[i] = valore;
+                   i++;
+                }
+                valore = getNumber();
+            }
+            let tavola = "<ol>";
+            let sum = 0;
+            for(let j of vector){
+                sum += parseInt(j);
+                tavola += "<li>"+ j + "</li>"
+            }
+            tavola += "</ol>";
+            tavola += "<p>"+vector+"</p>";
+            let media = sum/vector.length;
+            tavola += "<p>La media dei valori &egrave: "+ media + "</p>";
+            document.body.innerHTML = tavola;
+            
+        </script>
+    </body>
+</html>
