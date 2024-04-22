@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <title>Esercizio 5.3</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Paolo Aimar">
+        <link rel="stylesheet" href="lab7.css">
+        <script>
+            "use strict";
+            function check(n){
+                if(n == "" || isNaN(n) || n == null){
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+            function cambia(periodo){
+                switch(periodo){
+                    case 'giorno':
+                        document.getElementById('titolo').innerHTML = "Esercizio 5.5 - adesso &egrave; giorno";
+                        document.body.style.color = "black";
+                        document.body.style.backgroundColor = "white";
+                        break;
+                    case 'notte':
+                        document.getElementById('titolo').innerHTML = "Esercizio 5.5 - adesso &egrave; notte";
+                        document.body.style.color = "white";
+                        document.body.style.backgroundColor = "black";
+                        break;
+                    default:
+                        document.getElementById('titolo').innerHTML = "Esercizio 7.3 - adesso &egrave; notte";
+                        document.body.style.background = "black";
+                        document.body.style.color = "white";
+                }
+            }
+        </script>
+    </head>
+    <body class="giorno">
+        <h1 id="titolo">Esercizio 5.5 - adesso &egrave; giorno</h1>
+        <p>Tanto la gatta va al lardo che ci lascia lo zampino</p>
+        <p><span onclick="(cambia('giorno'))">GIORNO</span></p>
+        <p><span onclick="(cambia('notte'))">NOTTE</span></p>
+        <script>
+            let pedice = document.createElement("footer");
+            let paragrafo = document.createElement("p");
+            let testo = document.createTextNode("Realizzato da Aimar Paolo");
+            paragrafo.appendChild(testo);
+            pedice.appendChild(paragrafo);
+            document.body.appendChild(pedice);
+            
+        </script>
+    </body>
