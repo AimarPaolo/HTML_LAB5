@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <title>Esercizio 5.3</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Paolo Aimar">
+        <link rel="stylesheet" href="lab7.css">
+        <script type="application/javascript" src="lab7.js"></script>
+        <script>
+            "use strict"
+            function check(n){
+                if(n == "" || isNaN(n) || n == null){
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+            function massimo_inserito(){
+                let cont = 0;
+                let array = new Array();
+                while(cont < 5){
+                    let n = window.prompt("inserire un valore");
+                    if (check(n)){
+                        cont++;
+                        array[cont] = n;
+                    }
+                    else{
+                        window.alert("Il valore inserito non è corretto!");
+                    }
+                }
+                return find_max(array);
+            }
+        </script>
+    </head>
+    <body>
+        <script>
+            "use strict";
+            let massimo = massimo_inserito();
+            document.body.innerHTML = "<p>Il valore massimo che hai inserito &egrave: "+massimo+"</p>";
+        </script>
+    </body>
+</html>
