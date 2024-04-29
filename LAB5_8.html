@@ -1,25 +1,83 @@
-<!--Creare una pagina HTML che permetta l’introduzione della data di nascita di un utente, in formato 
-(dd/mm/yyyy oppure mm/dd/yyyy), e che indichi in output in quale giorno della settimana cadde il 
-Natale in quell’anno.-->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
-    <head>
-        <title>Esercizio 5.3</title>
-        <meta charset="utf-8">
-        <meta name="author" content="Paolo Aimar">
-        <link rel="stylesheet" href="lab7.css">
-        <script>
-            "use strict"
-            function check(n){
-                if(n == "" || isNaN(n) || n == null){
-                    return false;
-                }else{
-                    return true;
-                }
+  <head>
+  <meta charset="utf-8" />
+  <title>Esercizio 5.8</title>
+  <meta name="author" content="Paolo Rossi" >        
+  <script>
+    "use strict";
+    function ottieniGiorno(n) {
+      switch (n) {
+        case 0:
+          return "Domenica"
+          break;
+        case 1:
+          return "Lunedì";
+          break;
+        case 2:
+          return "Martedì";
+          break;
+        case 3:
+          return "Mercoledì";
+          break;
+        case 4:
+          return "Giovedì";
+          break;
+        case 5:
+          return "Venerdì";
+          break;
+        case 6:
+          return "Sabato";
+          break;
+      }
+    }
+
+    function calcolaGiornoNatale() {
+
+        let datavalida = false;
+
+        do {
+            let dataNascita = window.prompt("Inserisci la tua data di nascita (formato: dd/mm/yyyy - mm/dd/yyyy) e scoprirai in che giorno cadde Natale in quell'anno!");
+            let partsData = dataNascita.split("/");
+            let giorno = partsData[0];
+            let mese = partsData[1];
+            let anno = partsData[2];
+
+            //controllo se il giorno o il mese sono stati inseriti con un solo numero (esempio: 1 --> gennaio --> 01)
+            if(giorno.length == 1) {
+                giorno = "0" + giorno;
+            } 
+            if(mese.length == 1) {
+                mese = "0" + mese;
             }
-        </script>
-    </head>
-    <body>
-        
-    </body>
+
+            if(dataNascita == '') {
+                window.alert("Non è stata inserita nessuna data!");
+            } else if (giorno.length != 2 || mese.length != 2 || anno.length != 4 || partsData.length < 3) { //controlli sul formato della data
+                window.alert("Formato data non valido!");
+            } else {
+                datavalida = true;
+
+                // Determina se il formato è dd/mm/yyyy o mm/dd/yyyy (se il primo è > 12, è sicuramente dd/mm)
+                if (mese > 12) {
+                    mese = parseInt(partsData[0]);
+                    giorno = parseInt(partsData[1]);
+                }
+                let data = new Date(anno, mese-1, giorno);         // Creiamo una data per il giorno di nascita
+                let n = data.getFullYear();               // Restituisce l'anno della data di nascita
+                let natale = new Date(n, 11, 25);         // Creiamo una data per il 25 dicembre di quell'anno
+                document.writeln("Il giorno di Natale dell'anno " + n + " &egrave; capitato di " + ottieniGiorno(natale.getDay()/*restituisce un numero che identifica il giorno della settima 0=domenica; 1=lunedì; ...; 6=sabato*/));   
+            }     
+        } while (!datavalida)
+    }
+    </script>
+
+  </head>
+  <body>
+    <h1>Esercizio 5.8</h1>
+
+    <script> calcolaGiornoNatale() </script>
+    
+</body>
+
 </html>
